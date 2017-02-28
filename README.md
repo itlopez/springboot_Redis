@@ -3,5 +3,5 @@ springboot集成redis的demo，使用spring_data_redis,简单易用好上手，�
 
 ~~~
 
-将学校数据录入redis，增加查询速度
+业务：将学校数据录入redis，增加查询速度
 ~~~
