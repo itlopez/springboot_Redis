@@ -15,4 +15,6 @@ import java.util.List;
 public interface SchoolMapper {
 
     List<School> queryListSchoolByIndex(SchoolDto schoolDto);
+
+    void updateSchoolBySchoolId(SchoolDto schoolDto);
 }

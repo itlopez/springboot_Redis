@@ -61,4 +61,26 @@ public class SpringbootRedisApplicationTests {
 		String schoolStr = schoolService.getSchoolDataFromRedis(SchoolAreaRedisPrefix.schoolPrefix + school.getOrgNo(), String.valueOf(school.getType()));
 		System.out.println(schoolStr);
 	}
+
+	/**
+	 * 回滚（rollbackFor）
+	 */
+	@Test
+	public void updateSchoolBySchoolId(){
+		SchoolDto schoolDto = new SchoolDto();
+		schoolDto.setName("lopez小学");
+		schoolDto.setId("573");
+		schoolService.updateSchoolBySchoolIdService(schoolDto);
+	}
+
+	/**
+	 * 不回滚（noRollbackFor）
+	 */
+	@Test
+	public void updateSchoolBySchoolIdNoRollbackFor(){
+		SchoolDto schoolDto = new SchoolDto();
+		schoolDto.setName("lopez小学");
+		schoolDto.setId("573");
+		schoolService.updateSchoolBySchoolIdServiceNotRollback(schoolDto);
+	}
 }

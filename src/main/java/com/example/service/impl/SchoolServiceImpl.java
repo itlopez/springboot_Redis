@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.concurrent.Future;
@@ -43,6 +45,24 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public String getSchoolDataFromRedis(String key, String field) {
         return hashRedisDao.hget(key, field);
+    }
+
+    @Override
+    @Transactional(rollbackFor={IllegalArgumentException.class})
+    public void updateSchoolBySchoolIdService(SchoolDto schoolDto) {
+        schoolMapper.updateSchoolBySchoolId(schoolDto);
+        if (ObjectUtils.isEmpty(schoolDto.getSchoolKey())){
+            throw new IllegalArgumentException("参数错误！");
+        }
+    }
+
+    @Override
+    @Transactional(noRollbackFor = {IllegalArgumentException.class})
+    public void updateSchoolBySchoolIdServiceNotRollback(SchoolDto schoolDto) {
+        schoolMapper.updateSchoolBySchoolId(schoolDto);
+        if (ObjectUtils.isEmpty(schoolDto.getSchoolKey())){
+            throw new IllegalArgumentException("参数错误！");
+        }
     }
 
 }

@@ -11,6 +11,10 @@ public class SchoolDto {
 
     private  Integer toIndex = 10000;
 
+    private  String id;
+
+    private  String name;
+
     public Integer getSchoolKey() {
         return schoolKey;
     }
@@ -33,5 +37,21 @@ public class SchoolDto {
 
     public void setToIndex(Integer toIndex) {
         this.toIndex = toIndex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

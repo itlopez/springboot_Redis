@@ -17,4 +17,7 @@ public interface SchoolService {
 
     String getSchoolDataFromRedis(String key, String field);
 
+    void updateSchoolBySchoolIdService(SchoolDto schoolDto);
+
+    void updateSchoolBySchoolIdServiceNotRollback(SchoolDto schoolDto);
 }
